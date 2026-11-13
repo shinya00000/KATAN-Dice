@@ -190,7 +190,8 @@ npm run build   # dist/index.html（HTMLファイル1つ）を生成
 | スクリプト | 内容 |
 |---|---|
 | `npm run vectors` | KATAN のテスト値を、参照コードと同じ形式で出力 |
-| `npx vite-node scripts/readme-figures.ts [回数]` | このREADMEのグラフ（`docs/images/*.svg`）と統計量を生成 |
+| `npx vite-node scripts/readme-figures.ts [回数]` | このREADMEのグラフ（`docs/images/distribution.svg`・`convergence.svg`）と統計量を生成 |
+| `npx vite-node scripts/og-image.ts` | LINEなどで共有したときのプレビュー画像（`public/og-image.png`、1200×630）を生成（Google Chrome が必要） |
 
 `main` ブランチにプッシュすると、GitHub Actions がテスト・ビルドを行い、GitHub Pages に公開します（[`.github/workflows/pages.yml`](.github/workflows/pages.yml)）。
 
@@ -208,8 +209,9 @@ src/
   ui/views.ts        サイコロ・グラフ・暗号の可視化（描画）
   main.ts            画面の制御
 tests/               ユニットテスト
-scripts/             テスト値・実験・READMEの図の生成
-docs/images/         READMEの図
+scripts/             テスト値・実験・READMEの図・プレビュー画像の生成
+docs/images/         READMEの図と、プレビュー画像の元のSVG
+public/              リンクプレビュー画像（og-image.png）
 ```
 
 ## 参考文献

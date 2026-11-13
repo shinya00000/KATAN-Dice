@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" font-family="-apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Segoe UI', sans-serif">
+<rect x="0.5" y="0.5" width="719" height="379" rx="12" fill="#ffffff" stroke="#e3ddd0"/>
+<text x="24" y="30" font-size="17" font-weight="700" fill="#2a2620">KATAN64 で 1,000,000 回振ったときの「2つの目の合計」の分布</text>
+<rect x="24" y="44" width="12" height="12" rx="2" fill="#e2a92f"/><text x="42" y="54" font-size="12" fill="#5c564b">実測</text><rect x="82" y="44" width="12" height="12" rx="2" fill="#ddd6c8"/><text x="100" y="54" font-size="12" fill="#5c564b">理論値 (6 − |s − 7|) / 36</text>
+<line x1="56" x2="696" y1="334" y2="334" stroke="#efeae0"/>
+<text x="48" y="338" font-size="11" text-anchor="end" fill="#8a8273">0%</text>
+<line x1="56" x2="696" y1="260.66666666666663" y2="260.66666666666663" stroke="#efeae0"/>
+<text x="48" y="264.66666666666663" font-size="11" text-anchor="end" fill="#8a8273">5%</text>
+<line x1="56" x2="696" y1="187.33333333333331" y2="187.33333333333331" stroke="#efeae0"/>
+<text x="48" y="191.33333333333331" font-size="11" text-anchor="end" fill="#8a8273">10%</text>
+<line x1="56" x2="696" y1="113.99999999999997" y2="113.99999999999997" stroke="#efeae0"/>
+<text x="48" y="117.99999999999997" font-size="11" text-anchor="end" fill="#8a8273">15%</text>
+<rect x="60.654545454545456" y="293.25925925925924" width="48.87272727272727" height="40.74074074074076" rx="3" fill="#ddd6c8"/>
+<rect x="71.70909090909092" y="293.44373333333334" width="26.763636363636365" height="40.55626666666666" rx="3" fill="#e2a92f"/>
+<text x="85.0909090909091" y="287.25925925925924" font-size="11" text-anchor="middle" fill="#2a2620">2.77%</text>
+<text x="85.0909090909091" y="354" font-size="14" font-weight="700" text-anchor="middle" fill="#5c564b">2</text>
+<rect x="118.83636363636361" y="252.51851851851853" width="48.87272727272727" height="81.48148148148147" rx="3" fill="#ddd6c8"/>
+<rect x="129.89090909090908" y="252.48266666666666" width="26.763636363636365" height="81.51733333333334" rx="3" fill="#e2a92f"/>
+<text x="143.27272727272725" y="246.48266666666666" font-size="11" text-anchor="middle" fill="#2a2620">5.56%</text>
+<text x="143.27272727272725" y="354" font-size="14" font-weight="700" text-anchor="middle" fill="#5c564b">3</text>
+<rect x="177.0181818181818" y="211.77777777777777" width="48.87272727272727" height="122.22222222222223" rx="3" fill="#ddd6c8"/>
+<rect x="188.07272727272726" y="211.91026666666667" width="26.763636363636365" height="122.08973333333333" rx="3" fill="#e2a92f"/>
+<text x="201.45454545454544" y="205.77777777777777" font-size="11" text-anchor="middle" fill="#2a2620">8.32%</text>
+<text x="201.45454545454544" y="354" font-size="14" font-weight="700" text-anchor="middle" fill="#5c564b">4</text>
+<rect x="235.2" y="171.03703703703704" width="48.87272727272727" height="162.96296296296296" rx="3" fill="#ddd6c8"/>
+<rect x="246.25454545454545" y="171.36573333333334" width="26.763636363636365" height="162.63426666666666" rx="3" fill="#e2a92f"/>
+<text x="259.6363636363636" y="165.03703703703704" font-size="11" text-anchor="middle" fill="#2a2620">11.09%</text>
+<text x="259.6363636363636" y="354" font-size="14" font-weight="700" text-anchor="middle" fill="#5c564b">5</text>
+<rect x="293.3818181818182" y="130.29629629629628" width="48.87272727272727" height="203.70370370370372" rx="3" fill="#ddd6c8"/>
+<rect x="304.43636363636364" y="129.58186666666666" width="26.763636363636365" height="204.41813333333334" rx="3" fill="#e2a92f"/>
+<text x="317.8181818181818" y="123.58186666666666" font-size="11" text-anchor="middle" fill="#2a2620">13.94%</text>
+<text x="317.8181818181818" y="354" font-size="14" font-weight="700" text-anchor="middle" fill="#5c564b">6</text>
+<rect x="351.56363636363636" y="89.55555555555554" width="48.87272727272727" height="244.44444444444446" rx="3" fill="#ddd6c8"/>
+<rect x="362.6181818181818" y="89.98919999999998" width="26.763636363636365" height="244.01080000000002" rx="3" fill="#cf4430"/>
+<text x="376" y="83.55555555555554" font-size="11" text-anchor="middle" fill="#2a2620">16.64%</text>
+<text x="376" y="354" font-size="14" font-weight="700" text-anchor="middle" fill="#cf4430">7</text>
+<rect x="409.74545454545455" y="130.29629629629628" width="48.87272727272727" height="203.70370370370372" rx="3" fill="#ddd6c8"/>
+<rect x="420.8" y="129.86933333333332" width="26.763636363636365" height="204.13066666666668" rx="3" fill="#e2a92f"/>
+<text x="434.1818181818182" y="123.86933333333332" font-size="11" text-anchor="middle" fill="#2a2620">13.92%</text>
+<text x="434.1818181818182" y="354" font-size="14" font-weight="700" text-anchor="middle" fill="#5c564b">8</text>
+<rect x="467.92727272727274" y="171.03703703703704" width="48.87272727272727" height="162.96296296296296" rx="3" fill="#ddd6c8"/>
+<rect x="478.9818181818182" y="171.02693333333335" width="26.763636363636365" height="162.97306666666665" rx="3" fill="#e2a92f"/>
+<text x="492.3636363636364" y="165.02693333333335" font-size="11" text-anchor="middle" fill="#2a2620">11.11%</text>
+<text x="492.3636363636364" y="354" font-size="14" font-weight="700" text-anchor="middle" fill="#5c564b">9</text>
+<rect x="526.1090909090909" y="211.77777777777777" width="48.87272727272727" height="122.22222222222223" rx="3" fill="#ddd6c8"/>
+<rect x="537.1636363636363" y="211.94693333333333" width="26.763636363636365" height="122.05306666666667" rx="3" fill="#e2a92f"/>
+<text x="550.5454545454545" y="205.77777777777777" font-size="11" text-anchor="middle" fill="#2a2620">8.32%</text>
+<text x="550.5454545454545" y="354" font-size="14" font-weight="700" text-anchor="middle" fill="#5c564b">10</text>
+<rect x="584.2909090909092" y="252.51851851851853" width="48.87272727272727" height="81.48148148148147" rx="3" fill="#ddd6c8"/>
+<rect x="595.3454545454546" y="252.41226666666665" width="26.763636363636365" height="81.58773333333335" rx="3" fill="#e2a92f"/>
+<text x="608.7272727272727" y="246.41226666666665" font-size="11" text-anchor="middle" fill="#2a2620">5.56%</text>
+<text x="608.7272727272727" y="354" font-size="14" font-weight="700" text-anchor="middle" fill="#5c564b">11</text>
+<rect x="642.4727272727273" y="293.25925925925924" width="48.87272727272727" height="40.74074074074076" rx="3" fill="#ddd6c8"/>
+<rect x="653.5272727272727" y="293.3044" width="26.763636363636365" height="40.69560000000001" rx="3" fill="#e2a92f"/>
+<text x="666.9090909090909" y="287.25925925925924" font-size="11" text-anchor="middle" fill="#2a2620">2.77%</text>
+<text x="666.9090909090909" y="354" font-size="14" font-weight="700" text-anchor="middle" fill="#5c564b">12</text>
+<line x1="56" x2="696" y1="334" y2="334" stroke="#c9c1b0"/>
+<text x="696" y="370" font-size="11" text-anchor="end" fill="#8a8273">鍵 K = ASCII "KATAN-DICE"（再現用の固定鍵）</text>
+</svg>

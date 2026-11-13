@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" font-family="-apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Segoe UI', sans-serif">
+<rect x="0.5" y="0.5" width="719" height="399" rx="12" fill="#ffffff" stroke="#e3ddd0"/>
+<text x="20" y="30" font-size="17" font-weight="700" fill="#2a2620">振る回数 N と、理論分布からのずれ（全変動距離 TV）</text>
+<line x1="20" x2="42" y1="50" y2="50" stroke="#2a78d6" stroke-width="2.5" />
+<text x="48" y="54" font-size="12" fill="#5c564b">実測 vs 三角形（厳密な理論値）</text>
+<line x1="245" x2="267" y1="50" y2="50" stroke="#eb6834" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="273" y="54" font-size="12" fill="#5c564b">実測 vs 正規分布 N(7, 35/6)</text>
+<line x1="460" x2="482" y1="50" y2="50" stroke="#9a9384" stroke-width="2.5" stroke-dasharray="2 3"/>
+<text x="488" y="54" font-size="12" fill="#5c564b">三角形と正規分布そのものの距離</text>
+<line x1="64" x2="676" y1="348" y2="348" stroke="#efeae0"/>
+<text x="56" y="352" font-size="11" text-anchor="end" fill="#8a8273">0.001</text>
+<line x1="64" x2="676" y1="256.66666666666663" y2="256.66666666666663" stroke="#efeae0"/>
+<text x="56" y="260.66666666666663" font-size="11" text-anchor="end" fill="#8a8273">0.01</text>
+<line x1="64" x2="676" y1="165.33333333333331" y2="165.33333333333331" stroke="#efeae0"/>
+<text x="56" y="169.33333333333331" font-size="11" text-anchor="end" fill="#8a8273">0.1</text>
+<line x1="64" x2="676" y1="74" y2="74" stroke="#efeae0"/>
+<text x="56" y="78" font-size="11" text-anchor="end" fill="#8a8273">1</text>
+<line x1="64" x2="64" y1="74" y2="348" stroke="#f5f1e8"/>
+<text x="64" y="366" font-size="11" text-anchor="middle" fill="#8a8273">10</text>
+<line x1="186.4" x2="186.4" y1="74" y2="348" stroke="#f5f1e8"/>
+<text x="186.4" y="366" font-size="11" text-anchor="middle" fill="#8a8273">100</text>
+<line x1="308.8" x2="308.8" y1="74" y2="348" stroke="#f5f1e8"/>
+<text x="308.8" y="366" font-size="11" text-anchor="middle" fill="#8a8273">1,000</text>
+<line x1="431.2" x2="431.2" y1="74" y2="348" stroke="#f5f1e8"/>
+<text x="431.2" y="366" font-size="11" text-anchor="middle" fill="#8a8273">10,000</text>
+<line x1="553.6" x2="553.6" y1="74" y2="348" stroke="#f5f1e8"/>
+<text x="553.6" y="366" font-size="11" text-anchor="middle" fill="#8a8273">100,000</text>
+<line x1="676" x2="676" y1="74" y2="348" stroke="#f5f1e8"/>
+<text x="676" y="366" font-size="11" text-anchor="middle" fill="#8a8273">1,000,000</text>
+<text x="370" y="390" font-size="12" text-anchor="middle" fill="#5c564b">振る回数 N（対数目盛）</text>
+<text x="18" y="211" font-size="12" text-anchor="middle" fill="#5c564b" transform="rotate(-90 18 211)">TV（対数目盛）</text>
+<line x1="64" x2="676" y1="119.66666666666666" y2="348" stroke="#cfc8b8" stroke-width="1.2"/>
+<line x1="73.69178451622929" x2="95.69178451622929" y1="329.35704158409214" y2="329.35704158409214" stroke="#cfc8b8" stroke-width="1.2"/>
+<text x="101.69178451622929" y="333.35704158409214" font-size="11" fill="#9a9384">細線: 参考 1/√N</text>
+<line x1="64" x2="676" y1="199.5048127501076" y2="199.5048127501076" stroke="#9a9384" stroke-width="1.5" stroke-dasharray="2 3"/>
+<polyline points="64,124.86335831439229 122.39964157768668,131.09279350312073 186.4,166.72983783876128 244.7996415776867,191.00222244654617 308.8,193.12461423053998 367.1996415776867,197.43905026296514 431.2,202.94258145001461 489.5996415776867,200.49761548386942 553.6,198.59941393766843 611.9996415776867,199.15691608412425 676,199.88631722232196" fill="none" stroke="#eb6834" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6 4"/>
+<circle cx="64" cy="124.86335831439229" r="3.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="122.39964157768668" cy="131.09279350312073" r="3.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="186.4" cy="166.72983783876128" r="3.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="244.7996415776867" cy="191.00222244654617" r="3.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="308.8" cy="193.12461423053998" r="3.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="367.1996415776867" cy="197.43905026296514" r="3.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="431.2" cy="202.94258145001461" r="3.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="489.5996415776867" cy="200.49761548386942" r="3.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="553.6" cy="198.59941393766843" r="3.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="611.9996415776867" cy="199.15691608412425" r="3.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="676" cy="199.88631722232196" r="3.5" fill="#eb6834" stroke="#ffffff" stroke-width="1.5"/>
+<polyline points="64,124.02347938249045 122.39964157768668,131.7247869430937 186.4,169.51251747120835 244.7996415776867,196.5198902817225 308.8,216.6211607977422 367.1996415776867,210.66760262708704 431.2,249.3247501570124 489.5996415776867,292.6826774421602 553.6,306.5194076953419 611.9996415776867,320.7047523545803 676,352.98053589129444" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linejoin="round" />
+<circle cx="64" cy="124.02347938249045" r="3.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="122.39964157768668" cy="131.7247869430937" r="3.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="186.4" cy="169.51251747120835" r="3.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="244.7996415776867" cy="196.5198902817225" r="3.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="308.8" cy="216.6211607977422" r="3.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="367.1996415776867" cy="210.66760262708704" r="3.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="431.2" cy="249.3247501570124" r="3.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="489.5996415776867" cy="292.6826774421602" r="3.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="553.6" cy="306.5194076953419" r="3.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="611.9996415776867" cy="320.7047523545803" r="3.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="676" cy="352.98053589129444" r="3.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>
+</svg>

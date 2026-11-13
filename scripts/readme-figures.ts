@@ -4,7 +4,7 @@
  * Rolls the app's own KATAN64 dice ROLLS times with a fixed, documented key
  * (K = ASCII "KATAN-DICE", exactly 80 bits) so that the result is reproducible, then writes
  *   docs/images/distribution.svg  – histogram of 2d6 sums vs. the exact triangle
- *   docs/images/convergence.svg   – total-variation distance vs. N (log-log)
+ *   docs/images/convergence.svg   – total-variation distance to the triangle vs. N (log-log)
  * and prints the statistics as JSON.
  *
  * Usage: npx vite-node scripts/readme-figures.ts [rolls]
@@ -21,17 +21,8 @@ const KEY = [...KEY_ASCII].reduce((acc, ch) => (acc << 8n) | BigInt(ch.charCodeA
 const OUT_DIR = 'docs/images';
 
 // ---------------------------------------------------------------- math
-const erf = (x: number): number => {
-  // Abramowitz & Stegun 7.1.26 (|error| < 1.5e-7)
-  const t = 1 / (1 + 0.3275911 * Math.abs(x));
-  const y = 1 - ((((1.061405429 * t - 1.453152027) * t + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
-  return x >= 0 ? y : -y;
-};
-const phi = (z: number): number => 0.5 * (1 + erf(z / Math.SQRT2));
 const SUMS = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const triangle = SUMS.map(theoreticalProbability);
-const sd = Math.sqrt(35 / 6);
-const normal = SUMS.map((s, i) => (i === SUMS.length - 1 ? 1 : phi((s + 0.5 - 7) / sd)) - (i === 0 ? 0 : phi((s - 0.5 - 7) / sd)));
 const tv = (p: readonly number[], q: readonly number[]): number => p.reduce((a, x, i) => a + Math.abs(x - (q[i] ?? 0)), 0) / 2;
 
 // ---------------------------------------------------------------- simulation
@@ -40,7 +31,7 @@ const sumCounts = new Array<number>(11).fill(0);
 const faceCounts = new Array<number>(6).fill(0);
 const pairCounts = new Array<number>(36).fill(0);
 const checkpoints = [10, 30, 100, 300, 1_000, 3_000, 10_000, 30_000, 100_000, 300_000, 1_000_000, 3_000_000].filter((n) => n <= ROLLS);
-const convergence: { n: number; triangle: number; normal: number }[] = [];
+const convergence: { n: number; triangle: number }[] = [];
 let prevSum = 0;
 let sumXY = 0;
 let sumX = 0;
@@ -58,7 +49,7 @@ for (let n = 0; n < ROLLS; n++) {
   prevSum = s;
   if (checkpoints.includes(n + 1)) {
     const emp = sumCounts.map((c) => c / (n + 1));
-    convergence.push({ n: n + 1, triangle: tv(emp, triangle), normal: tv(emp, normal) });
+    convergence.push({ n: n + 1, triangle: tv(emp, triangle) });
   }
 }
 const seconds = (performance.now() - t0) / 1000;
@@ -131,18 +122,11 @@ const convergenceSvg = (): string => {
   const x = (n: number): number => m.l + ((Math.log10(n) - xMin) / (xMax - xMin)) * iw;
   const y = (v: number): number => m.t + ((yMaxL - Math.log10(v)) / (yMaxL - yMinL)) * ih;
   const parts: string[] = [];
-  parts.push(`<text x="20" y="30" font-size="17" font-weight="700" fill="#2a2620">振る回数 N と、理論分布からのずれ（全変動距離 TV）</text>`);
-  const legend = [
-    ['#2a78d6', '', '実測 vs 三角形（厳密な理論値）'],
-    ['#eb6834', '6 4', '実測 vs 正規分布 N(7, 35/6)'],
-    ['#9a9384', '2 3', '三角形と正規分布そのものの距離'],
-  ] as const;
-  const legendX = [20, 245, 460];
-  legend.forEach(([color, dash, label], i) => {
-    const lx = legendX[i] ?? 20;
-    parts.push(`<line x1="${lx}" x2="${lx + 22}" y1="50" y2="50" stroke="${color}" stroke-width="2.5" ${dash ? `stroke-dasharray="${dash}"` : ''}/>`);
-    parts.push(`<text x="${lx + 28}" y="54" font-size="12" fill="#5c564b">${label}</text>`);
-  });
+  parts.push(`<text x="20" y="30" font-size="17" font-weight="700" fill="#2a2620">振る回数 N と、理論値（三角形）からのずれ（全変動距離 TV）</text>`);
+  parts.push(`<line x1="20" x2="42" y1="50" y2="50" stroke="#2a78d6" stroke-width="2.5"/>`);
+  parts.push(`<text x="48" y="54" font-size="12" fill="#5c564b">実測と理論値のずれ</text>`);
+  parts.push(`<line x1="200" x2="222" y1="50" y2="50" stroke="#cfc8b8" stroke-width="1.5"/>`);
+  parts.push(`<text x="228" y="54" font-size="12" fill="#5c564b">参考: 1/√N</text>`);
   for (let e = yMinL; e <= yMaxL; e++) {
     const v = 10 ** e;
     parts.push(`<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="#efeae0"/>`);
@@ -158,19 +142,10 @@ const convergenceSvg = (): string => {
   // reference 1/√N
   const n0 = 10;
   const n1 = Math.max(...checkpoints);
-  parts.push(`<line x1="${x(n0)}" x2="${x(n1)}" y1="${y(1 / Math.sqrt(n0))}" y2="${y(1 / Math.sqrt(n1))}" stroke="#cfc8b8" stroke-width="1.2"/>`);
-  // label for the reference line, placed in the empty lower-left corner of the plot
-  parts.push(`<line x1="${x(12)}" x2="${x(12) + 22}" y1="${y(0.0016)}" y2="${y(0.0016)}" stroke="#cfc8b8" stroke-width="1.2"/>`);
-  parts.push(`<text x="${x(12) + 28}" y="${y(0.0016) + 4}" font-size="11" fill="#9a9384">細線: 参考 1/√N</text>`);
-  const gap = tv(triangle, normal);
-  parts.push(`<line x1="${x(n0)}" x2="${x(n1)}" y1="${y(gap)}" y2="${y(gap)}" stroke="#9a9384" stroke-width="1.5" stroke-dasharray="2 3"/>`);
-  const series = (key: 'triangle' | 'normal', color: string, dash: string): void => {
-    const pts = convergence.map((c) => `${x(c.n)},${y(c[key])}`).join(' ');
-    parts.push(`<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linejoin="round" ${dash ? `stroke-dasharray="${dash}"` : ''}/>`);
-    convergence.forEach((c) => parts.push(`<circle cx="${x(c.n)}" cy="${y(c[key])}" r="3.5" fill="${color}" stroke="#ffffff" stroke-width="1.5"/>`));
-  };
-  series('normal', '#eb6834', '6 4');
-  series('triangle', '#2a78d6', '');
+  parts.push(`<line x1="${x(n0)}" x2="${x(n1)}" y1="${y(1 / Math.sqrt(n0))}" y2="${y(1 / Math.sqrt(n1))}" stroke="#cfc8b8" stroke-width="1.5"/>`);
+  const pts = convergence.map((c) => `${x(c.n)},${y(c.triangle)}`).join(' ');
+  parts.push(`<polyline points="${pts}" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linejoin="round"/>`);
+  convergence.forEach((c) => parts.push(`<circle cx="${x(c.n)}" cy="${y(c.triangle)}" r="3.5" fill="#2a78d6" stroke="#ffffff" stroke-width="1.5"/>`));
   return frame(W, H, parts.join('\n'));
 };
 
@@ -190,7 +165,6 @@ console.log(
       mean,
       variance,
       lag1,
-      triangleVsNormal: tv(triangle, normal),
       convergence,
     },
     null,

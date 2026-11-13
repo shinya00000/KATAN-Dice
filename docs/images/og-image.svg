@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" font-family="-apple-system, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="0.2" cy="0.1" r="1.1">
+      <stop offset="0" stop-color="#fbf8f1"/>
+      <stop offset="0.6" stop-color="#f3eee3"/>
+      <stop offset="1" stop-color="#e9e2d3"/>
+    </radialGradient>
+    <filter id="die-shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#46321a" flood-opacity="0.35"/>
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#46321a" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="36" y="36" width="1128" height="558" rx="32" fill="#fffdf8" stroke="#ddd3c0" stroke-width="2"/>
+
+  <text x="96" y="200" font-size="84" font-weight="800" letter-spacing="1"><tspan fill="#b07a0a">KATAN</tspan><tspan fill="#2a2620"> Dice</tspan></text>
+  <text x="100" y="272" font-size="40" font-weight="700" fill="#2a2620">共通鍵暗号で振るサイコロ</text>
+  <text x="100" y="340" font-size="26" fill="#6d6556">KATAN64 で2つのサイコロを振るカタン用アプリ</text>
+  <text x="100" y="380" font-size="26" fill="#6d6556">出目の公平性を、あとから検証できます</text>
+
+  <text x="100" y="470" font-size="15" font-weight="700" fill="#9a9180" letter-spacing="1">KATAN64 REGISTERS</text>
+  <text x="100" y="502" font-size="15" fill="#9a9180" font-family="ui-monospace, Menlo, monospace">L1</text>
+  <rect x="132" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="149" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="166" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="183" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="200" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="217" y="490" width="13" height="13" rx="3" fill="#d99a12"/><rect x="234" y="490" width="13" height="13" rx="3" fill="#d99a12"/><rect x="251" y="490" width="13" height="13" rx="3" fill="#d99a12"/><rect x="268" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="285" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="302" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="319" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="336" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="353" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="370" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="387" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="404" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="421" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="438" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="455" y="490" width="13" height="13" rx="3" fill="#d99a12"/><rect x="472" y="490" width="13" height="13" rx="3" fill="#d99a12"/><rect x="489" y="490" width="13" height="13" rx="3" fill="#d99a12"/><rect x="506" y="490" width="13" height="13" rx="3" fill="#d99a12"/><rect x="523" y="490" width="13" height="13" rx="3" fill="#e6dece"/><rect x="540" y="490" width="13" height="13" rx="3" fill="#e6dece"/>
+  <text x="100" y="525" font-size="15" fill="#9a9180" font-family="ui-monospace, Menlo, monospace">L2</text>
+  <rect x="132" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="149" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="166" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="183" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="200" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="217" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="234" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="251" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="268" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="285" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="302" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="319" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="336" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="353" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="370" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="387" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="404" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="421" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="438" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="455" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="472" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="489" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="506" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="523" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="540" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="557" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="574" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="591" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="608" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="625" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="642" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="659" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="676" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="693" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="710" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="727" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="744" y="513" width="13" height="13" rx="3" fill="#e6dece"/><rect x="761" y="513" width="13" height="13" rx="3" fill="#2f86b8"/><rect x="778" y="513" width="13" height="13" rx="3" fill="#2f86b8"/>
+
+  <g filter="url(#die-shadow)"><svg x="790" y="104" width="200" height="200" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="og1-face" cx="0.5" cy="0.5" r="0.72">
+      <stop offset="0" stop-color="#f9f7f0"/>
+      <stop offset="0.6" stop-color="#f7f3ea"/>
+      <stop offset="0.88" stop-color="#e3e0d7"/>
+      <stop offset="1" stop-color="#c6c2bb"/>
+    </radialGradient>
+  </defs>
+  <rect x="3" y="3" width="94" height="94" rx="22" fill="url(#og1-face)" stroke="#a19e98" stroke-opacity=".55" stroke-width="1"/>
+  
+  <circle cx="29.32" cy="29.32" r="9" fill="#1b1b1b"/><circle cx="50" cy="50" r="9" fill="#1b1b1b"/><circle cx="70.68" cy="70.68" r="9" fill="#1b1b1b"/>
+</svg></g>
+  <g filter="url(#die-shadow)"><svg x="930" y="284" width="200" height="200" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="og2-face" cx="0.5" cy="0.5" r="0.72">
+      <stop offset="0" stop-color="#f9f7f0"/>
+      <stop offset="0.6" stop-color="#f7f3ea"/>
+      <stop offset="0.88" stop-color="#e3e0d7"/>
+      <stop offset="1" stop-color="#c6c2bb"/>
+    </radialGradient>
+  </defs>
+  <rect x="3" y="3" width="94" height="94" rx="22" fill="url(#og2-face)" stroke="#a19e98" stroke-opacity=".55" stroke-width="1"/>
+  
+  <circle cx="29.32" cy="29.32" r="9" fill="#1b1b1b"/><circle cx="70.68" cy="29.32" r="9" fill="#1b1b1b"/><circle cx="29.32" cy="70.68" r="9" fill="#1b1b1b"/><circle cx="70.68" cy="70.68" r="9" fill="#1b1b1b"/>
+</svg></g>
+
+  <text x="1120" y="560" font-size="20" text-anchor="end" fill="#8a8273">shinya00000.github.io/KATAN-Dice</text>
+</svg>

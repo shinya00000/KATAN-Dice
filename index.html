@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KATAN Dice</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='6' y='6' width='88' height='88' rx='20' fill='%23e9b949'/%3E%3Ccircle cx='30' cy='30' r='9'/%3E%3Ccircle cx='50' cy='50' r='9'/%3E%3Ccircle cx='70' cy='70' r='9'/%3E%3C/svg%3E" />
+    <script>
+      // apply the saved theme before first paint (avoids a dark→light flash)
+      (function () {
+        var theme = 'dark';
+        try {
+          var s = JSON.parse(localStorage.getItem('katan-dice/v1/settings') || 'null');
+          if (s && (s.theme === 'light' || s.theme === 'dark' || s.theme === 'system')) theme = s.theme;
+        } catch (e) {}
+        if (theme === 'system') theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <h1 class="brand"><span class="k">KATAN</span> Dice <small>共通鍵暗号で振るサイコロ</small></h1>
+      <div class="top-actions">
+        <span class="badge" id="phase-badge" hidden>鍵公開済み</span>
+        <button type="button" class="btn ghost" id="btn-settings">⚙ 設定</button>
+        <div class="menu-wrap">
+          <button type="button" class="btn ghost icon" id="btn-menu" aria-haspopup="menu" aria-expanded="false" aria-controls="game-menu" aria-label="ゲームの操作">⋯</button>
+          <div class="menu" id="game-menu" role="menu" hidden>
+            <button type="button" role="menuitem" class="menu-item" id="btn-reveal">ゲーム終了（鍵を公開）…</button>
+            <button type="button" role="menuitem" class="menu-item" id="btn-new">新しいゲーム…</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel dice-panel" aria-label="サイコロ">
+        <div class="dice-stage" id="dice-stage">
+          <div class="dice">
+            <div class="die" id="die1"></div>
+            <div class="die" id="die2"></div>
+          </div>
+          <div class="sum" id="sum" aria-live="polite"></div>
+          <div class="robber" id="robber" aria-hidden="true"><span>7</span>盗賊が動きます</div>
+        </div>
+
+        <div class="controls">
+          <button type="button" class="btn ctl" id="btn-undo">◀ 1つ戻る <kbd>←</kbd></button>
+          <button type="button" class="btn ctl primary" id="btn-roll">サイコロをふる <kbd>Space</kbd></button>
+          <button type="button" class="btn ctl" id="btn-redo">1つ進む ▶ <kbd>→</kbd></button>
+        </div>
+
+        <div class="recent-wrap">
+          <span class="mini-label">直近の出目<br /><small>古い ← → 新しい</small></span>
+          <div class="recent" id="recent"></div>
+        </div>
+
+        <div class="cipher" id="cipher"></div>
+      </section>
+
+      <section class="panel timer-panel" aria-label="経過時間">
+        <div class="panel-label">サイコロを振ってからの時間</div>
+        <div class="timer" id="timer">--:--</div>
+        <div class="think" id="think"></div>
+        <div class="count-line"><b id="count">0</b> 投 <span id="voided"></span></div>
+        <div class="commit-box" id="commit-box">
+          <div class="commit-head">
+            <span>コミットメント Com</span>
+            <button type="button" class="link-btn" id="btn-commit-toggle" aria-expanded="false" aria-controls="commit-detail">全体を表示</button>
+          </div>
+          <code id="commitment">—</code>
+          <div class="commit-detail" id="commit-detail" hidden>
+            <p class="commit-note" id="commit-note">ゲーム終了時の検証に使います。今のうちに撮影・メモしておいてください。</p>
+            <p class="formula-hint">Com = SHA-256("katan-dice/v1/commit:" ‖ K)　※K は16進文字列ではなく10バイトの値</p>
+          </div>
+        </div>
+        <div class="wake-line" id="wake">スリープ防止: 確認中…</div>
+      </section>
+
+      <section class="panel chart-panel" aria-label="出目の分布">
+        <div class="panel-label">
+          出目の分布（合計 2〜12）
+          <span class="legend"><i class="lg-observed"></i>実測 <i class="lg-expected"></i>理論値</span>
+        </div>
+        <div class="chart" id="chart"></div>
+      </section>
+    </main>
+
+    <dialog id="dlg-setup" class="dialog">
+      <form method="dialog" id="setup-form">
+        <h2>新しいゲーム</h2>
+        <p>
+          各プレイヤーが<strong>合言葉</strong>を入力します（ほかの人は画面から目をそらしてください）。
+          空欄は無視されます。合言葉はゲーム終了時に公開されます。
+        </p>
+        <div class="words" id="word-fields"></div>
+        <button type="button" class="btn ghost small" id="btn-add-word">＋ プレイヤーを追加</button>
+        <div class="formula">
+          <div>K = trunc<sub>80</sub>( H(D‖"r:"‖r) ⊕ H(D‖"w1:"‖w<sub>1</sub>) ⊕ H(D‖"w2:"‖w<sub>2</sub>) ⊕ … )</div>
+          <div>Com = H(D‖"commit:"‖K)</div>
+          <span>H = SHA-256、D = "katan-dice/v1/"、r = ブラウザが生成する128bit乱数</span>
+        </div>
+        <p class="error" id="setup-error" role="alert"></p>
+        <div class="dialog-actions">
+          <button type="button" class="btn ghost" id="btn-setup-cancel">キャンセル</button>
+          <button type="submit" class="btn primary" id="btn-start">鍵を生成して開始</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="dlg-settings" class="dialog">
+      <form method="dialog">
+        <h2>設定</h2>
+        <fieldset>
+          <legend>テーマ</legend>
+          <label><input type="radio" name="theme" value="dark" /> ダーク</label>
+          <label><input type="radio" name="theme" value="light" /> ライト</label>
+          <label><input type="radio" name="theme" value="system" /> OS の設定に合わせる</label>
+        </fieldset>
+        <fieldset>
+          <legend>サイコロの色</legend>
+          <label><input type="radio" name="diceColor" value="classic" /> 白（普通のサイコロ）</label>
+          <label><input type="radio" name="diceColor" value="redYellow" /> 赤と黄（都市と騎士）</label>
+        </fieldset>
+        <label class="row">長考の目安
+          <input type="number" id="set-think" min="10" max="3600" step="10" /> 秒
+        </label>
+        <label class="row"><input type="checkbox" id="set-sound" /> 7が出たときの効果音</label>
+        <div class="dialog-actions">
+          <button type="submit" class="btn primary">閉じる</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="dlg-reveal" class="dialog wide">
+      <form method="dialog">
+        <h2>鍵の公開と検証</h2>
+        <p class="muted">ゲーム開始時に表示していたコミットメントと照合し、全ての出目を鍵から再計算しました。</p>
+        <ul class="checks" id="reveal-checks"></ul>
+        <dl class="reveal-values">
+          <div><dt>鍵 K（80bit）</dt><dd><code id="rv-key"></code></dd></div>
+          <div><dt>乱数 r</dt><dd><code id="rv-salt"></code></dd></div>
+          <div><dt>合言葉</dt><dd id="rv-words"></dd></div>
+          <div><dt>コミットメント Com</dt><dd><code id="rv-commit"></code></dd></div>
+        </dl>
+        <div class="formula">
+          <div>K = trunc<sub>80</sub>( H(D‖"r:"‖r) ⊕ H(D‖"w1:"‖w<sub>1</sub>) ⊕ H(D‖"w2:"‖w<sub>2</sub>) ⊕ … )</div>
+          <div>Com = H(D‖"commit:"‖K)</div>
+          <span>H = SHA-256、D = "katan-dice/v1/"。r と K は16進文字列ではなくバイト列（16バイト / 10バイト）としてハッシュします。</span>
+        </div>
+        <div class="dialog-actions">
+          <button type="button" class="btn ghost" id="btn-export">ログを JSON で保存</button>
+          <button type="button" class="btn ghost" id="btn-new-from-reveal">新しいゲーム</button>
+          <button type="submit" class="btn primary">閉じる</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

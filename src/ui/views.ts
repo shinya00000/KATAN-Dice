@@ -83,10 +83,11 @@ export const dieSvg = (value: Die | null, theme: DieTheme, id: string): string =
 
 const fmtPct = (p: number): string => `${Math.round(p * 100)}%`;
 
-export const histogramSvg = (stats: readonly SumStat[], total: number): string => {
-  const W = 520;
-  const H = 300;
-  const m = { l: 40, r: 10, t: 22, b: 30 };
+/** `compact`: drawn at its real pixel size for the record band (no y axis, no grid) */
+export const histogramSvg = (stats: readonly SumStat[], total: number, compact = false): string => {
+  const W = compact ? 440 : 520;
+  const H = compact ? 150 : 300;
+  const m = compact ? { l: 2, r: 2, t: 18, b: 22 } : { l: 40, r: 10, t: 22, b: 30 };
   const iw = W - m.l - m.r;
   const ih = H - m.t - m.b;
   const peak = Math.max(...stats.map((s) => Math.max(s.observed, s.expected)));
@@ -97,7 +98,7 @@ export const histogramSvg = (stats: readonly SumStat[], total: number): string =
   const slot = iw / stats.length;
 
   const grid: string[] = [];
-  for (let p = 0; p <= yMax + 1e-9; p += step) {
+  for (let p = 0; !compact && p <= yMax + 1e-9; p += step) {
     grid.push(
       `<line x1="${m.l}" x2="${W - m.r}" y1="${y(p)}" y2="${y(p)}" class="grid"/>` +
         `<text x="${m.l - 6}" y="${y(p) + 4}" text-anchor="end" class="axis">${fmtPct(p)}</text>`,
@@ -116,7 +117,7 @@ export const histogramSvg = (stats: readonly SumStat[], total: number): string =
         ? `<rect x="${cx - ow / 2}" y="${y(s.observed)}" width="${ow}" height="${y(0) - y(s.observed)}" rx="1.5" class="observed${seven}"><title>実測 ${s.sum}: ${s.count}回 (${(s.observed * 100).toFixed(1)}%)</title></rect>`
         : '';
     const count = s.count > 0 ? `<text x="${cx}" y="${y(s.observed) - 6}" text-anchor="middle" class="count${seven}">${s.count}</text>` : '';
-    const label = `<text x="${cx}" y="${H - m.b + 19}" text-anchor="middle" class="xlabel${seven}">${s.sum}</text>`;
+    const label = `<text x="${cx}" y="${H - m.b + (compact ? 16 : 19)}" text-anchor="middle" class="xlabel${seven}">${s.sum}</text>`;
     return expected + observed + count + label;
   });
 

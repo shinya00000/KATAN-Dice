@@ -23,7 +23,7 @@ const dom = {
   stage: el('dice-stage', HTMLDivElement),
   die1: el('die1', HTMLDivElement),
   die2: el('die2', HTMLDivElement),
-  sum: el('sum', HTMLDivElement),
+  sum: el('sum', HTMLElement),
   robber: el('robber', HTMLDivElement),
   btnUndo: el('btn-undo', HTMLButtonElement),
   btnRoll: el('btn-roll', HTMLButtonElement),
@@ -72,7 +72,7 @@ const dom = {
 };
 
 const ANIM_MS = 700;
-const RECENT_LIMIT = 14;
+const RECENT_LIMIT = 20;
 const MAX_PLAYERS = 8;
 const INITIAL_PLAYERS = 4;
 
@@ -225,7 +225,7 @@ const render = (): void => {
   dom.count.textContent = String(active.length);
   dom.voided.textContent = cancelled > 0 ? `（取消 ${cancelled}）` : '';
   renderCommitment(game);
-  dom.chart.innerHTML = histogramSvg(sumDistribution(active), active.length);
+  dom.chart.innerHTML = histogramSvg(sumDistribution(active), active.length, true);
 
   const [wake, wakeClass, wakeTitle] = wakeText(state.wake);
   dom.wake.textContent = wake;

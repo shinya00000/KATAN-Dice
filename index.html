@@ -49,37 +49,27 @@
       </div>
     </header>
 
-    <main class="layout">
-      <section class="panel dice-panel" aria-label="サイコロ">
-        <div class="dice-stage cut" id="dice-stage">
-          <div class="dice">
-            <div class="die" id="die1"></div>
-            <div class="die" id="die2"></div>
-          </div>
-          <div class="sum" id="sum" aria-live="polite"></div>
-          <div class="robber cut" id="robber" aria-hidden="true" hidden><span>7</span>盗賊が動きます</div>
+    <main class="board">
+      <div class="dice-stage cut" id="dice-stage" aria-label="サイコロ">
+        <div class="dice">
+          <div class="die" id="die1"></div>
+          <div class="die" id="die2"></div>
         </div>
+        <div class="robber cut" id="robber" aria-hidden="true" hidden><span>7</span>盗賊が動きます</div>
+      </div>
 
-        <div class="controls">
-          <button type="button" class="btn ctl" id="btn-undo">1つ戻る</button>
-          <button type="button" class="btn ctl primary" id="btn-roll">サイコロをふる</button>
-          <button type="button" class="btn ctl" id="btn-redo">1つ進む</button>
-          <p class="keys">キー操作　<kbd>Space</kbd> 振る　<kbd aria-label="左キー">←</kbd> 戻る　<kbd aria-label="右キー">→</kbd> 進む</p>
-        </div>
+      <div class="controls">
+        <button type="button" class="btn ctl" id="btn-undo">1つ戻る</button>
+        <button type="button" class="btn ctl primary" id="btn-roll">サイコロをふる</button>
+        <button type="button" class="btn ctl" id="btn-redo">1つ進む</button>
+        <p class="keys">キー操作　<kbd>Space</kbd> 振る　<kbd aria-label="左キー">←</kbd> 戻る　<kbd aria-label="右キー">→</kbd> 進む</p>
+      </div>
 
-        <div class="recent-wrap cut">
-          <span class="mini-label">直近の出目（右が新しい）</span>
-          <div class="recent" id="recent"></div>
-        </div>
-
-        <div class="cipher" id="cipher"></div>
-      </section>
-
-      <section class="panel timer-panel cut" aria-label="経過時間">
-        <div class="panel-label">サイコロを振ってからの時間</div>
+      <section class="clock" aria-label="経過時間">
+        <p class="clock-label">サイコロを振ってからの時間</p>
         <div class="timer" id="timer">--:--</div>
         <div class="think" id="think"></div>
-        <div class="count-line"><b id="count">0</b> 投 <span id="voided"></span></div>
+        <p class="clock-line"><span class="sum" id="sum" aria-live="polite"></span><span class="count-line"><b id="count">0</b> 投 <span id="voided"></span></span></p>
         <div class="commit-box" id="commit-box">
           <div class="commit-head">
             <span>コミットメント Com</span>
@@ -93,15 +83,24 @@
         </div>
         <div class="wake-line" id="wake">スリープ防止: 確認中…</div>
       </section>
-
-      <section class="panel chart-panel" aria-label="出目の分布">
-        <div class="panel-label">
-          出目の分布（合計 2〜12）
-          <span class="legend"><i class="lg-observed"></i>実測 <i class="lg-expected"></i>理論値</span>
-        </div>
-        <div class="chart" id="chart"></div>
-      </section>
     </main>
+
+    <section class="record cut" aria-label="出目の記録と分布">
+      <div class="record-in">
+        <div class="record-log">
+          <h2 class="record-head">直近の出目（右が新しい）</h2>
+          <div class="recent" id="recent"></div>
+        </div>
+        <div class="record-dist">
+          <h2 class="record-head">出目の分布（合計 2〜12）<span class="legend"><i class="lg-observed"></i>実測 <i class="lg-expected"></i>理論値</span></h2>
+          <div class="chart" id="chart"></div>
+        </div>
+        <details class="cipher-pop">
+          <summary><span class="when-closed">KATAN64 の計算を見る</span><span class="when-open">出目の記録に戻る</span></summary>
+          <div class="cipher" id="cipher"></div>
+        </details>
+      </div>
+    </section>
 
     <dialog id="dlg-setup" class="dialog">
       <form method="dialog" id="setup-form">

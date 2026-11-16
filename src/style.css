@@ -15,6 +15,7 @@
   --torn-band: polygon(0 0, 100% 0, 100% calc(100% - 2.9px), 97.22% calc(100% - 4.2px), 94.44% calc(100% - 3.9px), 91.67% calc(100% - 4.8px), 88.89% calc(100% - 6.3px), 86.11% calc(100% - 4.4px), 83.33% calc(100% - 4.7px), 80.56% calc(100% - 4.8px), 77.78% calc(100% - 3.7px), 75% calc(100% - 4.2px), 72.22% calc(100% - 4.1px), 69.44% calc(100% - 5.5px), 66.67% calc(100% - 6.2px), 63.89% calc(100% - 5.6px), 61.11% calc(100% - 5.7px), 58.33% calc(100% - 4.7px), 55.56% calc(100% - 6.2px), 52.78% calc(100% - 6.3px), 50% calc(100% - 4.9px), 47.22% calc(100% - 3.8px), 44.44% calc(100% - 4.9px), 41.67% calc(100% - 4.3px), 38.89% calc(100% - 3.4px), 36.11% calc(100% - 4px), 33.33% calc(100% - 3.5px), 30.56% calc(100% - 2.5px), 27.78% calc(100% - 4.6px), 25% calc(100% - 5.5px), 22.22% calc(100% - 4.2px), 19.44% calc(100% - 3.6px), 16.67% calc(100% - 4.4px), 13.89% calc(100% - 3.3px), 11.11% calc(100% - 3.9px), 8.33% calc(100% - 3.7px), 5.56% calc(100% - 3.2px), 2.78% calc(100% - 3.6px), 0% calc(100% - 3.9px));
   --torn-sheet: polygon(0% 4.3px, 2.78% 4.1px, 5.56% 3.1px, 8.33% 2.8px, 11.11% 2.3px, 13.89% 3.4px, 16.67% 2.5px, 19.44% 1.6px, 22.22% 2.1px, 25% 2.1px, 27.78% 1.5px, 30.56% 2.6px, 33.33% 2.6px, 36.11% 2.7px, 38.89% 2.1px, 41.67% 1.6px, 44.44% 2px, 47.22% 2.1px, 50% 3.8px, 52.78% 3.6px, 55.56% 4.8px, 58.33% 4.3px, 61.11% 3.8px, 63.89% 2.3px, 66.67% 2px, 69.44% 2.5px, 72.22% 4.1px, 75% 4.3px, 77.78% 4.8px, 80.56% 4.8px, 83.33% 3.3px, 86.11% 3.6px, 88.89% 2.6px, 91.67% 4.2px, 94.44% 3.1px, 97.22% 4.3px, 100% 5.2px, calc(100% - 4.3px) 0%, calc(100% - 3.4px) 7.14%, calc(100% - 3px) 14.29%, calc(100% - 1.3px) 21.43%, calc(100% - 0.5px) 28.57%, calc(100% - 1.5px) 35.71%, calc(100% - 1.8px) 42.86%, calc(100% - 2.3px) 50%, calc(100% - 2.4px) 57.14%, calc(100% - 1.9px) 64.29%, calc(100% - 2.4px) 71.43%, calc(100% - 2.1px) 78.57%, calc(100% - 3.3px) 85.71%, calc(100% - 3.6px) 92.86%, calc(100% - 3.2px) 100%, 100% calc(100% - 4px), 97.22% calc(100% - 3px), 94.44% calc(100% - 3.8px), 91.67% calc(100% - 3.5px), 88.89% calc(100% - 3.4px), 86.11% calc(100% - 3.5px), 83.33% calc(100% - 3.7px), 80.56% calc(100% - 3.9px), 77.78% calc(100% - 4.2px), 75% calc(100% - 4.3px), 72.22% calc(100% - 3.4px), 69.44% calc(100% - 2.9px), 66.67% calc(100% - 3px), 63.89% calc(100% - 4.1px), 61.11% calc(100% - 5px), 58.33% calc(100% - 5.5px), 55.56% calc(100% - 4.7px), 52.78% calc(100% - 5.2px), 50% calc(100% - 4.1px), 47.22% calc(100% - 3.8px), 44.44% calc(100% - 4.6px), 41.67% calc(100% - 3.9px), 38.89% calc(100% - 3.5px), 36.11% calc(100% - 4.5px), 33.33% calc(100% - 4.4px), 30.56% calc(100% - 3.3px), 27.78% calc(100% - 4.3px), 25% calc(100% - 2.7px), 22.22% calc(100% - 3.9px), 19.44% calc(100% - 3.9px), 16.67% calc(100% - 4px), 13.89% calc(100% - 3.9px), 11.11% calc(100% - 5px), 8.33% calc(100% - 3.6px), 5.56% calc(100% - 3px), 2.78% calc(100% - 1.5px), 0% calc(100% - 1.4px), 2.9px 100%, 3.2px 92.86%, 3.3px 85.71%, 2.7px 78.57%, 2.4px 71.43%, 3.4px 64.29%, 3.8px 57.14%, 3.5px 50%, 4px 42.86%, 3.8px 35.71%, 3.6px 28.57%, 4.3px 21.43%, 3.7px 14.29%, 3.3px 7.14%, 3.4px 0%);
   --torn-strip: polygon(0% 1.5px, 2.78% 2.2px, 5.56% 1.8px, 8.33% 3.5px, 11.11% 2.8px, 13.89% 2.7px, 16.67% 2.6px, 19.44% 1.6px, 22.22% 2.1px, 25% 2.3px, 27.78% 3.1px, 30.56% 3.6px, 33.33% 3.7px, 36.11% 3.6px, 38.89% 2.1px, 41.67% 2.5px, 44.44% 2.1px, 47.22% 2px, 50% 2.5px, 52.78% 2px, 55.56% 1.6px, 58.33% 2.5px, 61.11% 2.4px, 63.89% 2.2px, 66.67% 1.2px, 69.44% 1.1px, 72.22% 2.2px, 75% 1.3px, 77.78% 1px, 80.56% 1.8px, 83.33% 2.2px, 86.11% 3.4px, 88.89% 2.9px, 91.67% 2.7px, 94.44% 3.5px, 97.22% 4px, 100% 3.9px, 100% calc(100% - 4.5px), 97.22% calc(100% - 4.5px), 94.44% calc(100% - 3.8px), 91.67% calc(100% - 4.6px), 88.89% calc(100% - 3.7px), 86.11% calc(100% - 3.8px), 83.33% calc(100% - 3.6px), 80.56% calc(100% - 3.1px), 77.78% calc(100% - 3.6px), 75% calc(100% - 3.2px), 72.22% calc(100% - 4px), 69.44% calc(100% - 3.6px), 66.67% calc(100% - 4px), 63.89% calc(100% - 2.6px), 61.11% calc(100% - 3.7px), 58.33% calc(100% - 2.2px), 55.56% calc(100% - 2.9px), 52.78% calc(100% - 2.7px), 50% calc(100% - 1.9px), 47.22% calc(100% - 2px), 44.44% calc(100% - 1.5px), 41.67% calc(100% - 2.3px), 38.89% calc(100% - 2.5px), 36.11% calc(100% - 2.9px), 33.33% calc(100% - 2.3px), 30.56% calc(100% - 3.1px), 27.78% calc(100% - 2px), 25% calc(100% - 2.2px), 22.22% calc(100% - 2px), 19.44% calc(100% - 2.4px), 16.67% calc(100% - 1.5px), 13.89% calc(100% - 1.2px), 11.11% calc(100% - 1.2px), 8.33% calc(100% - 1.4px), 5.56% calc(100% - 2.5px), 2.78% calc(100% - 1.9px), 0% calc(100% - 2.2px));
+  --torn-band-top: polygon(0% 4.1px, 2.08% 4.5px, 4.17% 3px, 6.25% 2.9px, 8.33% 3px, 10.42% 4.1px, 12.5% 3px, 14.58% 3.8px, 16.67% 4.3px, 18.75% 4.6px, 20.83% 3.5px, 22.92% 3.6px, 25% 3.2px, 27.08% 4.4px, 29.17% 3.1px, 31.25% 5.7px, 33.33% 4.6px, 35.42% 5.5px, 37.5% 4.4px, 39.58% 2.5px, 41.67% 3px, 43.75% 2.6px, 45.83% 4px, 47.92% 3.6px, 50% 3.5px, 52.08% 4px, 54.17% 4.6px, 56.25% 3.9px, 58.33% 3.4px, 60.42% 4px, 62.5% 3.3px, 64.58% 3.6px, 66.67% 3.5px, 68.75% 1.8px, 70.83% 1.9px, 72.92% 2px, 75% 1.2px, 77.08% 2px, 79.17% 2.4px, 81.25% 2.5px, 83.33% 2.2px, 85.42% 1.8px, 87.5% 2.6px, 89.58% 2.9px, 91.67% 1.8px, 93.75% 3.3px, 95.83% 4.6px, 97.92% 5.1px, 100% 5.6px, 100% 100%, 0 100%);
   /* dice: a warm card-white die, and the two Cities and Knights dice */
   --die-classic: var(--color-card); --die-classic-pip: var(--color-ink);
   --die-red: oklch(56% 0.19 27); --die-red-pip: var(--color-fringe);
@@ -159,37 +160,33 @@ kbd {
   opacity: 0.7;
 }
 
-/* ---------------------------------------------------------------- layout: the table */
-.layout {
+/* ---------------------------------------------------------------- one board: the dice and their controls left, the clock set straight on the paper right */
+.board {
   flex: 1;
   width: 100%;
   max-width: var(--container);
   margin-inline: auto;
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(360px, 1fr);
-  grid-template-rows: auto minmax(0, 1fr);
-  gap: var(--space-md) var(--space-lg);
-  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: var(--space-md) var(--space-2xl);
+  padding: var(--space-md) var(--space-lg) 0;
   min-height: 0;
 }
-.panel { min-width: 0; }
-.panel-label { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-sm); font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); }
-.mini-label { font-size: var(--text-sm); font-weight: 500; color: var(--color-ink-2); white-space: nowrap; }
-.dice-panel { grid-row: 1 / span 2; display: flex; flex-direction: column; gap: var(--space-md); }
 
 /* ---------------------------------------------------------------- dice on a torn sugar-paper mat */
 .dice-stage {
   --cut-fill: var(--color-sugar);
-  flex: 1;
-  min-height: 280px;
+  grid-column: 1;
+  grid-row: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-xl);
-  padding: var(--space-md) var(--space-lg);
+  justify-content: space-evenly;
+  padding: var(--space-md) var(--space-xl);
 }
 .dice { display: flex; gap: var(--space-xl); }
-.die { position: relative; isolation: isolate; width: clamp(160px, min(20vw, 37vh), 320px); aspect-ratio: 1; }
+.die { position: relative; isolation: isolate; width: clamp(160px, min(21vw, 36vh), 320px); aspect-ratio: 1; }
 /* the face is the rounded rect at 3..97 with rx 22 of the 100 box: the shadow box matches it */
 .die::before { content: ""; position: absolute; inset: 3%; z-index: -1; border-radius: 23.4%; box-shadow: var(--shadow-die); pointer-events: none; }
 .die svg { width: 100%; height: 100%; }
@@ -217,12 +214,6 @@ kbd {
   from { transform: translateY(-6px); }
   to { transform: none; }
 }
-
-.sum { display: flex; flex-direction: column; align-items: center; gap: var(--space-2xs); min-width: 4.5ch; font-size: var(--text-sm); font-weight: 500; color: var(--color-ink-2); }
-.sum:empty { visibility: hidden; }
-.sum b { order: 1; font-size: var(--text-3xl); font-weight: 600; line-height: 1; color: var(--color-ink); font-variant-numeric: tabular-nums; }
-/* 7: the one loud moment, a coral sticker */
-.sum.seven b { padding: var(--space-2xs) var(--space-sm); border-radius: var(--radius-input); background: var(--grain), var(--color-accent-3); color: var(--color-accent-ink); }
 
 .robber {
   --cut-shape: var(--torn-strip); --cut-fill: var(--color-accent-3);
@@ -252,7 +243,7 @@ kbd {
 }
 
 /* ---------------------------------------------------------------- the three controls */
-.controls { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--space-md); }
+.controls { grid-column: 1; grid-row: 2; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--space-md); }
 .keys { grid-column: 1 / -1; justify-self: center; font-size: var(--text-sm); color: var(--color-ink-2); }
 .keys kbd { margin-right: var(--space-2xs); }
 .ctl { --edge: 5px; min-height: 54px; padding: 0 var(--space-md); border-radius: var(--radius-stock); font-size: var(--text-lg); }
@@ -260,17 +251,57 @@ kbd {
 .ctl:active { --edge: 1px; translate: 0 4px; }
 .ctl.primary { min-height: 58px; font-size: var(--text-xl); }
 
-/* ---------------------------------------------------------------- signature: the roll log on a torn kraft strip */
-.recent-wrap {
-  --cut-shape: var(--torn-strip); --cut-fill: var(--color-kraft);
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  padding: var(--space-sm) var(--space-md);
+/* ---------------------------------------------------------------- the clock: no box, the figure set large on the paper */
+.clock { grid-column: 2; grid-row: 1 / span 2; align-self: center; display: flex; flex-direction: column; gap: var(--space-2xs); min-width: 0; }
+.clock-label { color: var(--color-muted); font-weight: 500; }
+.timer { font-size: clamp(5rem, 9vw, 8.5rem); font-weight: 600; line-height: 0.95; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.think { align-self: flex-start; min-height: 1.6em; padding: 0 var(--space-xs); font-weight: 600; }
+/* past twice the limit, the note turns to ink so the table notices */
+.timer.over + .think { border-radius: var(--radius-input); background: var(--color-ink); color: var(--color-paper); }
+.clock-line { display: flex; align-items: baseline; gap: var(--space-lg); font-size: var(--text-lg); font-weight: 500; }
+/* the total keeps its place while the dice roll, so the count beside it does not jump */
+.sum { display: inline-flex; align-items: baseline; gap: var(--space-2xs); min-width: 5ch; }
+.sum b, .count-line b { font-size: var(--text-2xl); font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+/* 7: the one loud moment, a coral sticker */
+.sum.seven b { padding: 0 var(--space-xs); border-radius: var(--radius-input); background: var(--grain), var(--color-accent-3); color: var(--color-accent-ink); }
+.commit-box { display: flex; flex-direction: column; gap: var(--space-2xs); margin-top: var(--space-md); padding-top: var(--space-sm); border-top: 1px solid var(--color-rule); font-size: var(--text-sm); color: var(--color-muted); }
+.commit-head { display: flex; justify-content: space-between; gap: var(--space-xs); }
+.commit-box code { font-size: var(--text-sm); color: var(--color-ink-2); word-break: break-all; }
+.commit-box.spotlight code { font-size: var(--text-md); font-weight: 600; color: var(--color-ink); }
+.commit-detail { display: flex; flex-direction: column; gap: var(--space-2xs); }
+.commit-detail[hidden] { display: none; }
+.commit-note { font-weight: 600; color: var(--color-ink); }
+.commit-note[hidden] { display: none; }
+.formula-hint { font-family: var(--font-outlier); font-size: var(--text-xs); }
+.wake-line { padding-top: var(--space-2xs); font-size: var(--text-xs); color: var(--color-muted); }
+.wake-line.on { color: var(--color-success); font-weight: 600; }
+
+/* ---------------------------------------------------------------- signature: the record, one torn kraft band across the foot of the screen */
+.record {
+  --cut-shape: var(--torn-band-top); --cut-fill: var(--color-kraft);
+  margin-top: var(--space-md);
+  padding: var(--space-lg) var(--space-lg) var(--space-md);
+  color: var(--on-kraft);
 }
-.recent-wrap .mini-label { color: var(--on-kraft); }
-.recent { flex: 1; min-width: 0; display: flex; justify-content: flex-end; gap: var(--space-xs); padding-block: var(--space-xs) var(--space-sm); overflow: hidden; }
-.recent-empty { margin-right: auto; color: var(--on-kraft); font-size: var(--text-sm); }
+.record-in {
+  position: relative;
+  max-width: calc(var(--container) - 2 * var(--space-lg));
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 480px;
+  gap: var(--space-xs) var(--space-xl);
+  align-items: end;
+  /* the same height whichever side of the band is up, so the screen does not shift when it turns */
+  min-height: 213px;
+}
+.record-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-sm); margin-bottom: var(--space-sm); max-width: none; font-size: var(--text-md); font-weight: 600; letter-spacing: 0; color: var(--on-kraft); }
+.record-log { min-width: 0; }
+/* the band sits on the bottom edge: its fibre core shows along the tear only, never below the screen */
+.record.cut::after { translate: 1px -1px; }
+.record-dist .chart { max-width: 440px; }
+.record-dist { padding-left: var(--space-xl); border-left: 1px solid color-mix(in oklab, var(--on-kraft) 35%, transparent); }
+.recent { min-width: 0; display: flex; justify-content: flex-end; gap: var(--space-xs); padding-block: var(--space-xs) var(--space-sm); overflow: hidden; }
+.recent-empty { margin-right: auto; font-size: var(--text-sm); color: var(--on-kraft); }
 .chip {
   --edge: 3px;
   flex: none;
@@ -295,11 +326,40 @@ kbd {
 .chip.undone, .chip.voided { --edge: 0px; background: transparent; color: var(--on-kraft); box-shadow: inset 0 0 0 1px var(--on-kraft); font-weight: 500; text-decoration: line-through; }
 .chip.voided { opacity: 0.7; }
 
-/* ---------------------------------------------------------------- KATAN64 at work: a tinted well */
+/* the distribution, drawn on the kraft in the strip's own ink */
+.legend { display: inline-flex; align-items: center; gap: var(--space-2xs); font-size: var(--text-sm); font-weight: 500; }
+.legend i { display: inline-block; width: 12px; height: 12px; margin-left: var(--space-xs); border-radius: var(--space-3xs); }
+.lg-observed { background: var(--on-kraft); }
+.lg-expected { background: color-mix(in oklab, var(--on-kraft) 35%, transparent); }
+.chart { display: block; }
+.histogram { display: block; width: 100%; height: auto; }
+.histogram .grid { stroke: color-mix(in oklab, var(--on-kraft) 20%, transparent); stroke-width: 1; }
+.histogram .baseline { stroke: color-mix(in oklab, var(--on-kraft) 55%, transparent); }
+.histogram .axis { fill: var(--on-kraft); font-size: 12px; font-family: var(--font-body); font-variant-numeric: tabular-nums; }
+.histogram .expected { fill: color-mix(in oklab, var(--on-kraft) 35%, transparent); }
+.histogram .observed { fill: var(--on-kraft); }
+.histogram .count, .histogram .xlabel { fill: var(--on-kraft); font-family: var(--font-body); font-weight: 600; font-variant-numeric: tabular-nums; }
+.histogram .count { font-size: 12px; }
+.histogram .xlabel { font-size: 13px; }
+.histogram .observed.seven { fill: var(--color-accent-3); }
+
+/* ---------------------------------------------------------------- KATAN64 at work: the band turns over to show the calculation
+   Opening it swaps the band's contents (record and distribution out, the calculation in), so nothing above the band is ever covered */
+.cipher-pop { grid-column: 1 / -1; justify-self: end; font-size: var(--text-sm); }
+.cipher-pop .when-open, .cipher-pop[open] .when-closed { display: none; }
+.cipher-pop[open] .when-open { display: inline; }
+.record-in:has(.cipher-pop[open]) > .record-log, .record-in:has(.cipher-pop[open]) > .record-dist { display: none; }
+.cipher-pop[open] { justify-self: stretch; display: flex; flex-direction: column-reverse; gap: var(--space-xs); }
+.cipher-pop[open] summary { align-self: flex-end; }
+.cipher-pop summary { cursor: pointer; list-style: none; color: var(--on-kraft); font-weight: 500; text-decoration: underline; text-underline-offset: 0.2em; }
+.cipher-pop summary::-webkit-details-marker { display: none; }
+.cipher-pop summary:hover { text-decoration-thickness: 2px; }
+.cipher-pop summary:active { opacity: 0.8; }
+.cipher-pop summary:focus-visible { outline: 2px solid var(--on-kraft); outline-offset: 3px; border-radius: var(--space-3xs); }
 .cipher {
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-md) var(--space-lg);
   border-radius: var(--radius-card);
-  background: var(--color-paper-2);
+  background: var(--grain), var(--fibre), var(--color-card);
   font-size: var(--text-xs);
   color: var(--color-ink-2);
   display: flex;
@@ -347,63 +407,6 @@ kbd {
 .chunk.unused { color: var(--color-muted); }
 .chunk.pending { color: var(--color-muted); }
 .cipher-note { color: var(--color-ink); font-weight: 600; }
-
-/* ---------------------------------------------------------------- the pear field: time since the last roll */
-.timer-panel {
-  --cut-fill: var(--color-accent);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-  padding: var(--space-lg) var(--space-lg) var(--space-md);
-  color: var(--color-accent-ink);
-}
-.timer-panel .panel-label { color: var(--color-accent-ink); }
-.timer { font-size: clamp(4rem, 7vw, 6.5rem); font-weight: 600; line-height: 1.02; letter-spacing: var(--tracking-display); font-variant-numeric: tabular-nums; }
-.think { min-height: 1.5em; font-weight: 600; }
-/* over twice the limit, the sheet turns to ink */
-.timer-panel:has(.timer.over) { --cut-fill: var(--color-ink); color: var(--color-paper); }
-.timer-panel:has(.timer.over) .panel-label { color: var(--color-paper); }
-.count-line { font-weight: 500; }
-.count-line b { font-size: var(--text-2xl); font-weight: 600; font-variant-numeric: tabular-nums; }
-.commit-box { display: flex; flex-direction: column; gap: var(--space-2xs); margin-top: var(--space-xs); padding-top: var(--space-xs); border-top: 1px solid color-mix(in oklab, var(--color-accent-ink) 25%, transparent); font-size: var(--text-sm); }
-.commit-head { display: flex; justify-content: space-between; gap: var(--space-xs); font-weight: 500; }
-.commit-box .link-btn { color: inherit; }
-.commit-box code { font-size: var(--text-sm); word-break: break-all; }
-.commit-box.spotlight code { font-size: var(--text-md); font-weight: 600; }
-.commit-detail { display: flex; flex-direction: column; gap: var(--space-2xs); }
-.commit-detail[hidden] { display: none; }
-.commit-note { font-weight: 600; }
-.commit-note[hidden] { display: none; }
-.formula-hint { font-family: var(--font-outlier); font-size: var(--text-xs); }
-.wake-line { margin-top: auto; padding-top: var(--space-xs); font-size: var(--text-xs); }
-.wake-line.on { font-weight: 600; }
-
-/* ---------------------------------------------------------------- the distribution: a card */
-.chart-panel {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-  min-height: 0;
-  padding: var(--space-md) var(--space-lg);
-  border-radius: var(--radius-card);
-  background: var(--grain), var(--fibre), var(--color-card);
-  box-shadow: var(--shadow-card);
-}
-.chart { flex: 1; min-height: 220px; display: flex; align-items: center; }
-.legend { display: inline-flex; align-items: center; gap: var(--space-2xs); color: var(--color-ink-2); }
-.legend i { display: inline-block; width: 12px; height: 12px; margin-left: var(--space-xs); border-radius: var(--space-3xs); }
-.lg-observed { background: var(--color-ink); }
-.lg-expected { background: var(--color-rule); }
-.histogram { width: 100%; height: 100%; max-height: 100%; }
-.histogram .grid { stroke: var(--color-rule); stroke-width: 1; }
-.histogram .baseline { stroke: var(--color-ink-2); }
-.histogram .axis { fill: var(--color-muted); font-size: 12px; font-family: var(--font-body); font-variant-numeric: tabular-nums; }
-.histogram .expected { fill: var(--color-rule); }
-.histogram .observed { fill: var(--color-ink); }
-.histogram .count { fill: var(--color-ink); font-size: 13px; font-weight: 600; font-family: var(--font-body); font-variant-numeric: tabular-nums; }
-.histogram .xlabel { fill: var(--color-ink); font-size: 16px; font-weight: 600; font-family: var(--font-body); }
-.histogram .seven, .histogram .xlabel.seven, .histogram .count.seven { fill: var(--color-ink); }
-.histogram .observed.seven { fill: var(--color-accent-3); }
 
 /* ---------------------------------------------------------------- dialogs */
 .dialog {
@@ -488,9 +491,11 @@ fieldset label, .row { display: flex; align-items: center; gap: var(--space-xs);
 .toast:not(.info) { background: var(--color-accent-3); color: var(--color-accent-ink); }
 
 @media (max-width: 60rem) {
-  .layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; }
-  .dice-panel { grid-row: auto; }
-  .dice-stage { flex-wrap: wrap; }
+  .board { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; padding-bottom: var(--space-md); }
+  .dice-stage, .controls, .clock { grid-column: 1; grid-row: auto; }
+  .dice-stage { flex-wrap: wrap; min-height: 240px; }
+  .record-in { grid-template-columns: minmax(0, 1fr); }
+  .record-dist { padding-left: 0; border-left: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

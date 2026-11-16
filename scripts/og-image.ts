@@ -1,12 +1,12 @@
 /**
  * Generates the link-preview (OGP) image shown by LINE, X, Slack, etc.
  *
- *   docs/images/og-image.svg  – source (1200×630, light theme)
- *   public/og-image.png       – rendered PNG, copied to dist/ by Vite and referenced by og:image
+ *   docs/images/og-image.html  – source page (1200×630), built from the app's own stylesheet
+ *   public/og-image.png        – rendered PNG, copied to dist/ by Vite and referenced by og:image
  *
- * The dice are drawn with the app's own dieSvg(); the bit cells are the real KATAN64 register
- * state after 254 rounds (key = ASCII "KATAN-DICE", plaintext 0).
- * PNG rendering uses headless Google Chrome with a throwaway profile.
+ * The page uses src/style.css (Hum: paper, card stock, the torn kraft band), the app's own
+ * dieSvg() and Chillax from Fontshare, so the preview always matches the app.
+ * PNG rendering uses headless Google Chrome with a throwaway profile (it needs the network for the font).
  *
  * Usage: npx vite-node scripts/og-image.ts
  */
@@ -14,75 +14,63 @@ import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
-import { katan64EncryptTrace } from '../src/crypto/katan';
 import { dieSvg, dieTheme } from '../src/ui/views';
 
 const W = 1200;
 const H = 630;
-const SVG_OUT = 'docs/images/og-image.svg';
+const HTML_OUT = 'docs/images/og-image.html';
 const PNG_OUT = 'public/og-image.png';
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
-const KEY = [...'KATAN-DICE'].reduce((acc, ch) => (acc << 8n) | BigInt(ch.charCodeAt(0)), 0n);
-const trace = katan64EncryptTrace(KEY, 0n);
-const last = trace.snapshots[trace.snapshots.length - 1];
-if (last === undefined) throw new Error('KATAN trace is empty');
+// a sample run of sums for the band: reads as a sample, not as a claim
+const SAMPLE = [6, 8, 5, 9, 7, 4, 10, 6, 8, 11, 3, 8];
+const chips = SAMPLE.map((s, i) => {
+  const cls = ['chip', s === 7 ? 'seven' : '', i === SAMPLE.length - 1 ? 'current' : ''].filter(Boolean).join(' ');
+  return `<span class="${cls}">${s}</span>`;
+}).join('');
 
-const FONT = `-apple-system, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif`;
-
-const cells = (value: number, length: number, x: number, y: number, on: string): string => {
-  const size = 13;
-  const gap = 4;
-  return Array.from({ length }, (_, col) => {
-    const i = length - 1 - col; // MSB on the left, as in the app
-    const bit = Math.floor(value / 2 ** i) % 2;
-    return `<rect x="${x + col * (size + gap)}" y="${y}" width="${size}" height="${size}" rx="3" fill="${bit ? on : '#e6dece'}"/>`;
-  }).join('');
-};
-
-/** places the app's die SVG (viewBox 0 0 100 100) at (x, y) with the given size and an outer shadow */
-const die = (value: 1 | 2 | 3 | 4 | 5 | 6, which: 1 | 2, x: number, y: number, size: number): string =>
-  `<g filter="url(#die-shadow)"><svg x="${x}" y="${y}" width="${size}" height="${size}" viewBox="0 0 100 100">${dieSvg(value, dieTheme('classic', which), `og${which}`)
-    .replace(/^<svg[^>]*>/, '')
-    .replace(/<\/svg>\s*$/, '')}</svg></g>`;
-
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" font-family="${FONT}">
-  <defs>
-    <radialGradient id="bg" cx="0.2" cy="0.1" r="1.1">
-      <stop offset="0" stop-color="#fbf8f1"/>
-      <stop offset="0.6" stop-color="#f3eee3"/>
-      <stop offset="1" stop-color="#e9e2d3"/>
-    </radialGradient>
-    <filter id="die-shadow" x="-30%" y="-30%" width="160%" height="170%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#46321a" flood-opacity="0.35"/>
-      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#46321a" flood-opacity="0.28"/>
-    </filter>
-  </defs>
-  <rect width="${W}" height="${H}" fill="url(#bg)"/>
-  <rect x="36" y="36" width="${W - 72}" height="${H - 72}" rx="32" fill="#fffdf8" stroke="#ddd3c0" stroke-width="2"/>
-
-  <text x="96" y="200" font-size="84" font-weight="800" letter-spacing="1"><tspan fill="#b07a0a">KATAN</tspan><tspan fill="#2a2620"> Dice</tspan></text>
-  <text x="100" y="272" font-size="40" font-weight="700" fill="#2a2620">共通鍵暗号で振るサイコロ</text>
-  <text x="100" y="340" font-size="26" fill="#6d6556">KATAN64 で2つのサイコロを振るカタン用アプリ</text>
-  <text x="100" y="380" font-size="26" fill="#6d6556">出目の公平性を、あとから検証できます</text>
-
-  <text x="100" y="470" font-size="15" font-weight="700" fill="#9a9180" letter-spacing="1">KATAN64 REGISTERS</text>
-  <text x="100" y="502" font-size="15" fill="#9a9180" font-family="ui-monospace, Menlo, monospace">L1</text>
-  ${cells(last.l1, 25, 132, 490, '#d99a12')}
-  <text x="100" y="525" font-size="15" fill="#9a9180" font-family="ui-monospace, Menlo, monospace">L2</text>
-  ${cells(last.l2, 39, 132, 513, '#2f86b8')}
-
-  ${die(3, 1, 790, 104, 200)}
-  ${die(4, 2, 930, 284, 200)}
-
-  <text x="${W - 80}" y="${H - 70}" font-size="20" text-anchor="end" fill="#8a8273">shinya00000.github.io/KATAN-Dice</text>
-</svg>
+const page = `<!doctype html>
+<html lang="ja" data-theme="light">
+<head>
+<meta charset="utf-8">
+<link href="https://api.fontshare.com/v2/css?f[]=chillax@500,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../src/style.css">
+<style>
+  html, body { width: ${W}px; height: ${H}px; }
+  body { display: grid; grid-template-rows: minmax(0, 1fr) auto; }
+  .og { display: grid; grid-template-columns: 500px minmax(0, 1fr); gap: var(--space-xl); align-items: center; padding: var(--space-2xl) var(--space-2xl) var(--space-lg); }
+  .og .copy { grid-column: 2; grid-row: 1; min-width: 0; }
+  .og h1 { max-width: none; white-space: nowrap; font-size: 5.4rem; line-height: 0.95; letter-spacing: -0.04em; }
+  .og .sub { margin-top: var(--space-sm); font-size: 2.2rem; font-weight: 600; letter-spacing: -0.01em; }
+  .og .lead { margin-top: var(--space-md); font-size: 1.25rem; color: var(--color-ink-2); line-height: 1.5; }
+  .og .dice-stage { padding: var(--space-lg); justify-content: space-evenly; min-height: 0; }
+  .og .die { width: 190px; }
+  .band { --cut-shape: var(--torn-band-top); --cut-fill: var(--color-kraft); padding: var(--space-lg) var(--space-2xl) var(--space-lg); display: flex; justify-content: space-between; align-items: center; color: var(--on-kraft); }
+  .band .tiles { display: flex; gap: var(--space-xs); }
+  .band .url { font-size: 1.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+  <main class="og">
+    <div class="copy">
+      <h1>KATAN Dice</h1>
+      <p class="sub">共通鍵暗号で振るサイコロ</p>
+      <p class="lead">KATAN64 で2つのサイコロを振るカタン用アプリ。<br>出目の公平性を、あとから検証できます。</p>
+    </div>
+    <div class="dice-stage cut"><div class="dice">
+      <div class="die">${dieSvg(3, dieTheme('classic', 1), 'og1')}</div>
+      <div class="die">${dieSvg(5, dieTheme('classic', 2), 'og2')}</div>
+    </div></div>
+  </main>
+  <footer class="band cut"><div class="tiles">${chips}</div><span class="url">shinya00000.github.io/KATAN-Dice</span></footer>
+</body>
+</html>
 `;
 
 mkdirSync('docs/images', { recursive: true });
 mkdirSync('public', { recursive: true });
-writeFileSync(SVG_OUT, svg);
-console.log(`wrote ${SVG_OUT}`);
+writeFileSync(HTML_OUT, page);
+console.log(`wrote ${HTML_OUT}`);
 
 if (!existsSync(CHROME)) {
   throw new Error(`Google Chrome が見つからないため PNG を作れません: ${CHROME}`);
@@ -95,10 +83,12 @@ try {
       '--headless=new',
       '--disable-gpu',
       '--hide-scrollbars',
+      '--allow-file-access-from-files',
       `--user-data-dir=${profile}`,
       `--window-size=${W},${H}`,
+      '--virtual-time-budget=5000',
       `--screenshot=${resolve(PNG_OUT)}`,
-      `file://${resolve(SVG_OUT)}`,
+      `file://${resolve(HTML_OUT)}`,
     ],
     { encoding: 'utf8', timeout: 60_000 },
   );

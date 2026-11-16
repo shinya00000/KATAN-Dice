@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja" data-theme="light">
+<head>
+<meta charset="utf-8">
+<link href="https://api.fontshare.com/v2/css?f[]=chillax@500,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../src/style.css">
+<style>
+  html, body { width: 1200px; height: 630px; }
+  body { display: grid; grid-template-rows: minmax(0, 1fr) auto; }
+  .og { display: grid; grid-template-columns: 500px minmax(0, 1fr); gap: var(--space-xl); align-items: center; padding: var(--space-2xl) var(--space-2xl) var(--space-lg); }
+  .og .copy { grid-column: 2; grid-row: 1; min-width: 0; }
+  .og h1 { max-width: none; white-space: nowrap; font-size: 5.4rem; line-height: 0.95; letter-spacing: -0.04em; }
+  .og .sub { margin-top: var(--space-sm); font-size: 2.2rem; font-weight: 600; letter-spacing: -0.01em; }
+  .og .lead { margin-top: var(--space-md); font-size: 1.25rem; color: var(--color-ink-2); line-height: 1.5; }
+  .og .dice-stage { padding: var(--space-lg); justify-content: space-evenly; min-height: 0; }
+  .og .die { width: 190px; }
+  .band { --cut-shape: var(--torn-band-top); --cut-fill: var(--color-kraft); padding: var(--space-lg) var(--space-2xl) var(--space-lg); display: flex; justify-content: space-between; align-items: center; color: var(--on-kraft); }
+  .band .tiles { display: flex; gap: var(--space-xs); }
+  .band .url { font-size: 1.3rem; font-weight: 500; }
+</style>
+</head>
+<body>
+  <main class="og">
+    <div class="copy">
+      <h1>KATAN Dice</h1>
+      <p class="sub">共通鍵暗号で振るサイコロ</p>
+      <p class="lead">KATAN64 で2つのサイコロを振るカタン用アプリ。<br>出目の公平性を、あとから検証できます。</p>
+    </div>
+    <div class="dice-stage cut"><div class="dice">
+      <div class="die"><svg viewBox="0 0 100 100" class="die--classic" role="img" aria-label="出目 3">
+  <defs>
+    <radialGradient id="og1-face" cx="0.5" cy="0.5" r="0.72">
+      <stop offset="0" class="die-stop-hi"/>
+      <stop offset="0.6" class="die-stop-mid"/>
+      <stop offset="0.88" class="die-stop-lo"/>
+      <stop offset="1" class="die-stop-rim"/>
+    </radialGradient>
+  </defs>
+  <rect x="3" y="3" width="94" height="94" rx="22" fill="url(#og1-face)" class="die-face"/>
+  
+  <circle cx="29.32" cy="29.32" r="9" class="die-pip"/><circle cx="50" cy="50" r="9" class="die-pip"/><circle cx="70.68" cy="70.68" r="9" class="die-pip"/>
+</svg></div>
+      <div class="die"><svg viewBox="0 0 100 100" class="die--classic" role="img" aria-label="出目 5">
+  <defs>
+    <radialGradient id="og2-face" cx="0.5" cy="0.5" r="0.72">
+      <stop offset="0" class="die-stop-hi"/>
+      <stop offset="0.6" class="die-stop-mid"/>
+      <stop offset="0.88" class="die-stop-lo"/>
+      <stop offset="1" class="die-stop-rim"/>
+    </radialGradient>
+  </defs>
+  <rect x="3" y="3" width="94" height="94" rx="22" fill="url(#og2-face)" class="die-face"/>
+  
+  <circle cx="29.32" cy="29.32" r="9" class="die-pip"/><circle cx="70.68" cy="29.32" r="9" class="die-pip"/><circle cx="50" cy="50" r="9" class="die-pip"/><circle cx="29.32" cy="70.68" r="9" class="die-pip"/><circle cx="70.68" cy="70.68" r="9" class="die-pip"/>
+</svg></div>
+    </div></div>
+  </main>
+  <footer class="band cut"><div class="tiles"><span class="chip">6</span><span class="chip">8</span><span class="chip">5</span><span class="chip">9</span><span class="chip seven">7</span><span class="chip">4</span><span class="chip">10</span><span class="chip">6</span><span class="chip">8</span><span class="chip">11</span><span class="chip">3</span><span class="chip current">8</span></div><span class="url">shinya00000.github.io/KATAN-Dice</span></footer>
+</body>
+</html>

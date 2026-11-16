@@ -270,7 +270,14 @@ const restartAnimation = (node: HTMLElement, cls: string): void => {
   node.classList.add(cls);
 };
 
+// the robber banner exists only while it plays: `hidden` at rest, so nothing is left invisible-but-present
+dom.robber.addEventListener('animationend', () => {
+  dom.robber.classList.remove('show');
+  dom.robber.hidden = true;
+});
+
 const robberEffect = (): void => {
+  dom.robber.hidden = false;
   restartAnimation(dom.robber, 'show');
   if (state.settings.sound) {
     void playRobber().then((err) => {
@@ -325,6 +332,7 @@ const stepHistory = (step: (h: Game['history']) => Game['history']): void => {
   const game = state.game;
   if (state.busy || game === null || game.phase !== 'playing') return;
   dom.robber.classList.remove('show'); // the 7 effect belongs to the roll that is being stepped away from
+  dom.robber.hidden = true;
   commitGame({ ...game, history: step(game.history) });
 };
 

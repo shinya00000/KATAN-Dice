@@ -21,17 +21,13 @@ const PIPS: Readonly<Record<Die, readonly (readonly [number, number])[]>> = {
   6: [[28, 25], [72, 25], [28, 50], [72, 50], [28, 75], [72, 75]],
 };
 
+/** which die body to draw; the colours themselves live in the stylesheet's tokens (.die--classic / --red / --yellow) */
 interface DieTheme {
-  readonly body: string;
-  readonly pip: string;
+  readonly kind: 'classic' | 'red' | 'yellow';
 }
 
-export const dieTheme = (color: DiceColor, which: 1 | 2): DieTheme => {
-  if (color === 'redYellow') {
-    return which === 1 ? { body: '#c9372c', pip: '#fdf6ec' } : { body: '#f3c534', pip: '#1d1a14' };
-  }
-  return { body: '#f7f3ea', pip: '#1b1b1b' };
-};
+export const dieTheme = (color: DiceColor, which: 1 | 2): DieTheme =>
+  color === 'redYellow' ? { kind: which === 1 ? 'red' : 'yellow' } : { kind: 'classic' };
 
 const HEX6 = /^#([0-9a-f]{6})$/i;
 
@@ -65,19 +61,19 @@ export const dieSvg = (value: Die | null, theme: DieTheme, id: string): string =
   const label = value === null ? 'まだ振っていません' : `出目 ${value}`;
   const pipMarkup = pips
     .map(pipPos)
-    .map(([x, y]) => `<circle cx="${x}" cy="${y}" r="9" fill="${theme.pip}"/>`)
+    .map(([x, y]) => `<circle cx="${x}" cy="${y}" r="9" class="die-pip"/>`)
     .join('');
-  return `<svg viewBox="0 0 100 100" role="img" aria-label="${label}">
+  return `<svg viewBox="0 0 100 100" class="die--${theme.kind}" role="img" aria-label="${label}">
   <defs>
     <radialGradient id="${id}-face" cx="0.5" cy="0.5" r="0.72">
-      <stop offset="0" stop-color="${lighten(theme.body, 0.3)}"/>
-      <stop offset="0.6" stop-color="${theme.body}"/>
-      <stop offset="0.88" stop-color="${darken(theme.body, 0.08)}"/>
-      <stop offset="1" stop-color="${darken(theme.body, 0.2)}"/>
+      <stop offset="0" class="die-stop-hi"/>
+      <stop offset="0.6" class="die-stop-mid"/>
+      <stop offset="0.88" class="die-stop-lo"/>
+      <stop offset="1" class="die-stop-rim"/>
     </radialGradient>
   </defs>
-  <rect x="${FACE.x}" y="${FACE.y}" width="${FACE.size}" height="${FACE.size}" rx="22" fill="url(#${id}-face)" stroke="${darken(theme.body, 0.35)}" stroke-opacity=".55" stroke-width="1"/>
-  ${value === null ? `<text x="50" y="62" text-anchor="middle" font-size="34" fill="${theme.pip}" opacity=".35">?</text>` : ''}
+  <rect x="${FACE.x}" y="${FACE.y}" width="${FACE.size}" height="${FACE.size}" rx="22" fill="url(#${id}-face)" class="die-face"/>
+  ${value === null ? '<text x="50" y="62" text-anchor="middle" class="die-mark">?</text>' : ''}
   ${pipMarkup}
 </svg>`;
 };
@@ -110,13 +106,14 @@ export const histogramSvg = (stats: readonly SumStat[], total: number): string =
 
   const bars = stats.map((s, i) => {
     const cx = m.l + slot * (i + 0.5);
-    const ew = slot * 0.84;
-    const ow = slot * 0.46;
+    // data-viz.md: bars at most 24px thick, rounded only a touch
+    const ew = Math.min(slot * 0.6, 24);
+    const ow = Math.min(slot * 0.3, 12);
     const seven = s.sum === 7 ? ' seven' : '';
-    const expected = `<rect x="${cx - ew / 2}" y="${y(s.expected)}" width="${ew}" height="${y(0) - y(s.expected)}" rx="3" class="expected"><title>理論値 ${s.sum}: ${(s.expected * 100).toFixed(1)}%</title></rect>`;
+    const expected = `<rect x="${cx - ew / 2}" y="${y(s.expected)}" width="${ew}" height="${y(0) - y(s.expected)}" rx="1.5" class="expected"><title>理論値 ${s.sum}: ${(s.expected * 100).toFixed(1)}%</title></rect>`;
     const observed =
       total > 0 && s.count > 0
-        ? `<rect x="${cx - ow / 2}" y="${y(s.observed)}" width="${ow}" height="${y(0) - y(s.observed)}" rx="3" class="observed${seven}"><title>実測 ${s.sum}: ${s.count}回 (${(s.observed * 100).toFixed(1)}%)</title></rect>`
+        ? `<rect x="${cx - ow / 2}" y="${y(s.observed)}" width="${ow}" height="${y(0) - y(s.observed)}" rx="1.5" class="observed${seven}"><title>実測 ${s.sum}: ${s.count}回 (${(s.observed * 100).toFixed(1)}%)</title></rect>`
         : '';
     const count = s.count > 0 ? `<text x="${cx}" y="${y(s.observed) - 6}" text-anchor="middle" class="count${seven}">${s.count}</text>` : '';
     const label = `<text x="${cx}" y="${H - m.b + 19}" text-anchor="middle" class="xlabel${seven}">${s.sum}</text>`;

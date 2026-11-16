@@ -9,7 +9,7 @@ export interface Settings {
   readonly theme: ThemeSetting;
 }
 
-export const defaultSettings: Settings = { diceColor: 'classic', thinkSeconds: 120, sound: true, theme: 'dark' };
+export const defaultSettings: Settings = { diceColor: 'classic', thinkSeconds: 120, sound: true, theme: 'light' };
 
 const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
 

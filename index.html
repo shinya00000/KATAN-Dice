@@ -18,10 +18,12 @@
     <meta property="og:locale" content="ja_JP" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='6' y='6' width='88' height='88' rx='20' fill='%23e9b949'/%3E%3Ccircle cx='30' cy='30' r='9'/%3E%3Ccircle cx='50' cy='50' r='9'/%3E%3Ccircle cx='70' cy='70' r='9'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link href="https://api.fontshare.com/v2/css?f[]=chillax@500,600&display=swap" rel="stylesheet" />
     <script>
-      // apply the saved theme before first paint (avoids a dark→light flash)
+      // apply the saved theme before first paint (avoids a flash of the wrong theme)
       (function () {
-        var theme = 'dark';
+        var theme = 'light';
         try {
           var s = JSON.parse(localStorage.getItem('katan-dice/v1/settings') || 'null');
           if (s && (s.theme === 'light' || s.theme === 'dark' || s.theme === 'system')) theme = s.theme;
@@ -32,11 +34,11 @@
     </script>
   </head>
   <body>
-    <header class="topbar">
+    <header class="topbar cut">
       <h1 class="brand"><span class="k">KATAN</span> Dice <small>共通鍵暗号で振るサイコロ</small></h1>
       <div class="top-actions">
         <span class="badge" id="phase-badge" hidden>鍵公開済み</span>
-        <button type="button" class="btn ghost" id="btn-settings">⚙ 設定</button>
+        <button type="button" class="btn ghost" id="btn-settings">設定</button>
         <div class="menu-wrap">
           <button type="button" class="btn ghost icon" id="btn-menu" aria-haspopup="menu" aria-expanded="false" aria-controls="game-menu" aria-label="ゲームの操作">⋯</button>
           <div class="menu" id="game-menu" role="menu" hidden>
@@ -49,30 +51,31 @@
 
     <main class="layout">
       <section class="panel dice-panel" aria-label="サイコロ">
-        <div class="dice-stage" id="dice-stage">
+        <div class="dice-stage cut" id="dice-stage">
           <div class="dice">
             <div class="die" id="die1"></div>
             <div class="die" id="die2"></div>
           </div>
           <div class="sum" id="sum" aria-live="polite"></div>
-          <div class="robber" id="robber" aria-hidden="true"><span>7</span>盗賊が動きます</div>
+          <div class="robber cut" id="robber" aria-hidden="true" hidden><span>7</span>盗賊が動きます</div>
         </div>
 
         <div class="controls">
-          <button type="button" class="btn ctl" id="btn-undo">◀ 1つ戻る <kbd>←</kbd></button>
-          <button type="button" class="btn ctl primary" id="btn-roll">サイコロをふる <kbd>Space</kbd></button>
-          <button type="button" class="btn ctl" id="btn-redo">1つ進む ▶ <kbd>→</kbd></button>
+          <button type="button" class="btn ctl" id="btn-undo">1つ戻る</button>
+          <button type="button" class="btn ctl primary" id="btn-roll">サイコロをふる</button>
+          <button type="button" class="btn ctl" id="btn-redo">1つ進む</button>
+          <p class="keys">キー操作　<kbd>Space</kbd> 振る　<kbd aria-label="左キー">←</kbd> 戻る　<kbd aria-label="右キー">→</kbd> 進む</p>
         </div>
 
-        <div class="recent-wrap">
-          <span class="mini-label">直近の出目<br /><small>古い ← → 新しい</small></span>
+        <div class="recent-wrap cut">
+          <span class="mini-label">直近の出目（右が新しい）</span>
           <div class="recent" id="recent"></div>
         </div>
 
         <div class="cipher" id="cipher"></div>
       </section>
 
-      <section class="panel timer-panel" aria-label="経過時間">
+      <section class="panel timer-panel cut" aria-label="経過時間">
         <div class="panel-label">サイコロを振ってからの時間</div>
         <div class="timer" id="timer">--:--</div>
         <div class="think" id="think"></div>
@@ -85,7 +88,7 @@
           <code id="commitment">—</code>
           <div class="commit-detail" id="commit-detail" hidden>
             <p class="commit-note" id="commit-note">ゲーム終了時の検証に使います。今のうちに撮影・メモしておいてください。</p>
-            <p class="formula-hint">Com = SHA-256("katan-dice/v1/commit:" ‖ K)　※K は16進文字列ではなく10バイトの値</p>
+            <p class="formula-hint"><code>Com = SHA-256("katan-dice/v1/commit:" ‖ K)</code>　K は16進文字列ではなく10バイトの値</p>
           </div>
         </div>
         <div class="wake-line" id="wake">スリープ防止: 確認中…</div>
@@ -110,9 +113,9 @@
         <div class="words" id="word-fields"></div>
         <button type="button" class="btn ghost small" id="btn-add-word">＋ プレイヤーを追加</button>
         <div class="formula">
-          <div>K = trunc<sub>80</sub>( H(D‖"r:"‖r) ⊕ H(D‖"w1:"‖w<sub>1</sub>) ⊕ H(D‖"w2:"‖w<sub>2</sub>) ⊕ … )</div>
-          <div>Com = H(D‖"commit:"‖K)</div>
-          <span>H = SHA-256、D = "katan-dice/v1/"、r = ブラウザが生成する128bit乱数</span>
+          <code>K = trunc<sub>80</sub>( H(D‖"r:"‖r) ⊕ H(D‖"w1:"‖w<sub>1</sub>) ⊕ H(D‖"w2:"‖w<sub>2</sub>) ⊕ … )</code>
+          <code>Com = H(D‖"commit:"‖K)</code>
+          <span>H = SHA-256、D = <code>"katan-dice/v1/"</code>、r = ブラウザが生成する128bit乱数</span>
         </div>
         <p class="error" id="setup-error" role="alert"></p>
         <div class="dialog-actions">
@@ -158,9 +161,9 @@
           <div><dt>コミットメント Com</dt><dd><code id="rv-commit"></code></dd></div>
         </dl>
         <div class="formula">
-          <div>K = trunc<sub>80</sub>( H(D‖"r:"‖r) ⊕ H(D‖"w1:"‖w<sub>1</sub>) ⊕ H(D‖"w2:"‖w<sub>2</sub>) ⊕ … )</div>
-          <div>Com = H(D‖"commit:"‖K)</div>
-          <span>H = SHA-256、D = "katan-dice/v1/"。r と K は16進文字列ではなくバイト列（16バイト / 10バイト）としてハッシュします。</span>
+          <code>K = trunc<sub>80</sub>( H(D‖"r:"‖r) ⊕ H(D‖"w1:"‖w<sub>1</sub>) ⊕ H(D‖"w2:"‖w<sub>2</sub>) ⊕ … )</code>
+          <code>Com = H(D‖"commit:"‖K)</code>
+          <span>H = SHA-256、D = <code>"katan-dice/v1/"</code>。r と K は16進文字列ではなくバイト列（16バイト / 10バイト）としてハッシュします。</span>
         </div>
         <div class="dialog-actions">
           <button type="button" class="btn ghost" id="btn-export">ログを JSON で保存</button>

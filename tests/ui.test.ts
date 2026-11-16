@@ -4,9 +4,10 @@ import { defaultSettings, parseSettings, resolveTheme } from '../src/core/settin
 import { recentHtml } from '../src/ui/views';
 
 describe('settings: theme', () => {
-  it('defaults to dark and keeps valid values', () => {
-    expect(parseSettings(null).theme).toBe('dark');
-    expect(parseSettings({ ...defaultSettings, theme: 'neon' }).theme).toBe('dark');
+  it('defaults to light and keeps valid values', () => {
+    expect(parseSettings(null).theme).toBe('light');
+    expect(parseSettings({ ...defaultSettings, theme: 'neon' }).theme).toBe('light');
+    expect(parseSettings({ ...defaultSettings, theme: 'dark' }).theme).toBe('dark');
     expect(parseSettings({ ...defaultSettings, theme: 'light' }).theme).toBe('light');
     expect(parseSettings({ ...defaultSettings, theme: 'system' }).theme).toBe('system');
   });
